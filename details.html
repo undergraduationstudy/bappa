@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>कार्यक्रम विवरण - गणेश चतुर्थी</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background: linear-gradient(180deg, #ffb347, #ffcc33);
+    overflow-x: hidden;
+    color: #5e3200;
+    text-align: center;
+  }
+
+  /* Floating flowers */
+  .flower {
+    position: absolute;
+    width: 80px;
+    animation: float 12s infinite ease-in-out;
+    opacity: 0.85;
+  }
+  .flower:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+  .flower:nth-child(2) { top: 30%; left: 80%; animation-delay: 2s; }
+  .flower:nth-child(3) { top: 70%; left: 15%; animation-delay: 4s; }
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+  }
+
+  /* Ganesh image glow */
+  .ganesh {
+    margin-top: 40px;
+    width: 220px;
+    animation: glow 2.5s infinite ease-in-out;
+  }
+  @keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(255,200,0,0.6)); }
+    50% { filter: drop-shadow(0 0 20px rgba(255,150,0,1)); }
+  }
+
+  /* Countdown timer */
+  #countdown {
+    font-size: 1.5em;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.7);
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  a {
+    color: #d35400;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating flowers -->
+<img src="flower.png" class="flower">
+<img src="flower.png" class="flower">
+<img src="flower.png" class="flower">
+
+<!-- Ganesh image -->
+<img src="ganesh.png" alt="गणेश जी" class="ganesh">
+
+<h1>🙏 गणेश चतुर्थी महोत्सव विवरण 🙏</h1>
+
+<p><strong>स्थान:</strong> रूम नं. 105, गणेश अपार्टमेंट, बी विंग, एम.डी. नगर, नालासोपारा (पूर्व)</p>
+<p><a href="https://www.google.com/maps/place/Gaodevi+mandir+hindu+temple/@19.4181851,72.8288988,19.71z/data=!4m14!1m7!3m6!1s0x3be7a93897ecb8f7:0xaf2c198a039e8029!2sShree+Sai+Classes!8m2!3d19.4181342!4d72.8287208!16s%2Fg%2F11rqslfnk0!3m5!1s0x3be7a9d05f548983:0x2a65783f1dd66b01!8m2!3d19.418603!4d72.8290229!16s%2Fg%2F11fmn35z6h?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">📍 गूगल मैप्स पर दिशा देखें</a></p>
+
+<h2>🗓️ तिथि एवं समय</h2>
+<ul style="list-style:none; padding:0;">
+  <li><strong>आरंभ:</strong> 27 अगस्त 2025</li>
+  <li><strong>समापन:</strong> 2 सितम्बर 2025</li>
+  <li><strong>दैनिक आरती:</strong> प्रातः 9:00 बजे एवं सायं 9:00 बजे</li>
+</ul>
+
+<!-- Countdown Timer -->
+<div id="countdown">कार्यक्रम शुरू होने में: गणना हो रही है...</div>
+
+<script>
+  // Countdown Timer
+  const countdownEl = document.getElementById('countdown');
+  const eventDate = new Date("2025-08-27T00:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+      countdownEl.innerHTML = "🙏 कार्यक्रम आरंभ हो चुका है! 🙏";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `कार्यक्रम शुरू होने में: ${days} दिन ${hours} घंटे ${mins} मिनट ${secs} सेकंड`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
+</body>
+</html>
